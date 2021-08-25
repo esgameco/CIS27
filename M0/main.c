@@ -4,13 +4,20 @@
 
 int main()
 {
-	dl_node head;
-	for (int i = 0; i < 10; i++)
+	dl_node* head = createDefaultNode();
+	dl_node* currentNode = head;
+	head->val = 0;
+	for (int i = 1; i < 10; i++)
 	{
-		addNode(&head, i);
+		addNode(currentNode, i%5);
+		currentNode = currentNode->next;
 	}
 
-	displayNodes(&head);
+	displayNodes(head);
+	sortNodes(head);
+	printf("\n\n");
+	displayNodes(head);
+	deleteAllNodes(head);
 
 	return 0;
 }
