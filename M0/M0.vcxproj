@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\M1\cis27Fall2021ChanceVHwTemplate.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
