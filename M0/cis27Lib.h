@@ -136,3 +136,35 @@ void sortNodes(dl_node* head)
 		}
 	}
 }
+
+/*
+*	Arrays
+*/
+
+// Array sorting integers
+void insertionSort(int* arr, int arrSize)
+{
+	int tmp;
+	for (int i = 1; i < arrSize; i++)
+	{
+		for (int j = 0; j < i; j++)
+			if (arr[i] < arr[j])
+			{
+				tmp = arr[i];
+				for (int k = i - 1; k >= j; k--)
+				{
+					arr[k + 1] = arr[k];
+				}
+				arr[j] = tmp;
+			}
+	}
+}
+
+// Prints out the contents of an array
+void printArray(int arr[], int arrSize)
+{
+	for (int i = 0; i < arrSize; i++)
+	{
+		printf("%d: %d\n", i+1, arr[i]);
+	}
+}

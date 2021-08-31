@@ -18,8 +18,5 @@
     <ClCompile Include="cis27Fall2021ChanceVHw1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\..\Downloads\cis6Fall2020ChanceVodnoyHw4.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
 </Project>

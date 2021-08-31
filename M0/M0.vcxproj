@@ -139,8 +139,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\M1\cis27Fall2021ChanceVHwTemplate.c" />
+    <ClCompile Include="cis27Fall2021ChanceVHwTemplate.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="testArrays.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cis27Lib.h" />
