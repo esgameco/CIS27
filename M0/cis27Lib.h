@@ -160,6 +160,15 @@ void insertionSort(int* arr, int arrSize)
 	}
 }
 
+// Returns index in array of the first occurrance of a value
+int findInArray(int* arr, int arrSize, int value)
+{
+	for (int i = 0; i < arrSize; i++)
+		if (arr[i] == value)
+			return i;
+	return -1;
+}
+
 // Prints out the contents of an array
 void printArray(int arr[], int arrSize)
 {
