@@ -1,22 +1,25 @@
 ﻿/**
- * Program Name: cis27Fall2021ChanceVHw1.c
- * Discussion:   HW #1 - Menu Application
+ * Program Name: cis27Fall2021ChanceVHw2.c
+ * Discussion:   HW #2 - Menu Application
  * Written By:   Chance Vodnoy
  * Date:         2021/9/14
 */
 
-#define HW_NUM 1
-#define DATE "2021/09/14"
+#define HW_NUM 2
+#define DATE "2021/09/23"
 
 #define BUFFER_SIZE 20
+#define DIGIT_SIZE 10
 
 #include <stdio.h>
 
 void displayClassInfoChanceV();
 void displayMenuChanceV();
 void runMenuChanceV();
-void displayFunDigitInfoChanceV(int);
+void displayOddDigitForArrayChanceV(int[], int);
 void getDigitsChanceV(int, int[], int*, int*, int);
+void getOccurrencesChanceV(int[], int, int[]);
+int getNumDigitsCV(int[]);
 
 int main()
 {
@@ -29,30 +32,31 @@ int main()
 void displayClassInfoChanceV()
 {
     printf("CIS 27-Data Structures\n"
-        "Laney College\n"
-        "Chance Vodnoy\n\n"
-        "Information --\n"
-        "  Assignment: HW #%d\n"
-        "  Implemented by: Chance Vodnoy\n"
-        "  Submitted Date: %s\n"
-        "  Current Number of LEB available: 2\n"
-        "  Allowed Number of LEB Used: 0\n"
-        "  Remaining Number of LEB: 2\n\n", HW_NUM, DATE);
+           "Laney College\n"
+           "Chance Vodnoy\n\n"
+           "Information --\n"
+           "  Assignment: HW #%d\n"
+           "  Implemented by: Chance Vodnoy\n"
+           "  Submitted Date: %s\n"
+           "  Current Number of LEB available: 2\n"
+           "  Allowed Number of LEB Used: 0\n"
+           "  Remaining Number of LEB: 2\n\n", HW_NUM, DATE);
 }
 
 void displayMenuChanceV()
 {
-    printf("********************************************\n"
-           "*             MENU - Homework 1            *\n"
-           "* (1) Calling displayFunDigitInfoChanceV() *\n"
-           "* (2) Quit                                 *\n"
-           "********************************************\n");
+    printf("************************************************\n"
+           "*               MENU - Homework 2              *\n"
+           "* (1) Calling displayOddDigitForArrayChanceV() *\n"
+           "* (2) Quit                                     *\n"
+           "************************************************\n");
 }
 
 void runMenuChanceV()
 {
-    int inputCV = 0;
+    int numIntsCV = 0;
     int optionCV = 0;
+    int intsCV[BUFFER_SIZE];
 
     while (optionCV != 2)
     {
@@ -64,12 +68,19 @@ void runMenuChanceV()
         switch (optionCV)
         {
         case 1:
-            printf("Enter an integer: ");
-            scanf_s("%d", &inputCV);
+            printf("How many int's? ");
+            scanf_s("%d", &numIntsCV);
+            printf("\n");
 
-            printf("\nCalling displayFunDigitInfoChanceV()"
-                " with argument of %d --\n\n", inputCV);
-            displayFunDigitInfoChanceV(inputCV);
+            for (int i = 0; i < numIntsCV; i++)
+            {
+                printf("Enter value #%d: ", i+1);
+                scanf_s("%d", &intsCV[i]);
+            }
+
+            printf("\nCalling displayOddDigitForArrayChanceV()"
+                " with an array of size %d --\n\n", numIntsCV);
+            displayOddDigitForArrayChanceV(intsCV, numIntsCV);
             break;
         case 2:
             printf("Have fun!\n\n");
@@ -81,55 +92,43 @@ void runMenuChanceV()
 
 }
 
-void displayFunDigitInfoChanceV(int inputCV)
+void displayOddDigitForArrayChanceV(int intArrCV[], int arrSize)
 {
-    int digitsCV[BUFFER_SIZE] = { 0 };
+    int oddDigitsCV[BUFFER_SIZE] = { 0 };
+    int occurencesCV[DIGIT_SIZE] = { 0 };
     int numDigitsCV = 0;
-    int totalDigitsCV = 0;
-    int isEvenCV = (inputCV % 2) ? 0 : 1;
+    int currentIndexCV = 0;
+    int largestOddDigitCV = 0;
 
-    printf("  While displayFunDigitInfoChanceV() is running -\n\n");
+    for (int i = 0; i < arrSize; i++)
+        getDigitsChanceV(
+            intArrCV[i], oddDigitsCV, &numDigitsCV, &currentIndexCV, 0);
+    getOccurrencesChanceV(oddDigitsCV, currentIndexCV, &occurencesCV);
 
-    getDigitsChanceV(
-        inputCV, digitsCV, &numDigitsCV, &totalDigitsCV, isEvenCV);
+    printf("  There is/are %d odd digits of\n", currentIndexCV);
+    for (int i = 0; i < currentIndexCV; i++)
+        printf("    %d\n", oddDigitsCV[i]);
 
-    if (inputCV)
-        printf("  %d is a %s and %s integer.\n", inputCV,
-            (inputCV > 0) ? "positive" : "negative",
-            (isEvenCV) ? "even" : "odd");
-    else
-    {
-        printf("  ZERO is given!\n\n"
-            "  How many digit(s)? 1\n\n"
-            "  Only the martian can claim ZERO is, "
-            "perhaps, not EVEN!\n\n");
-        return;
-    }
-    printf("  There must be at least ONE %s digit!\n\n",
-        (isEvenCV) ? "even" : "odd");
+    for (int i = 9; i > 0; i -= 2)
+        if (occurencesCV[i] > 0)
+        {
+            largestOddDigitCV = i;
+            printf("  The largest odd digit is %d, which is seen %d time(s).\n\n",
+                largestOddDigitCV, occurencesCV[largestOddDigitCV]);
+            break;
+        }
 
-    printf("  Actually, there is/are %d %s digit(s) of\n",
-        numDigitsCV, (isEvenCV) ? "even" : "odd");
-    for (int i = 0; i < numDigitsCV; i++)
-        printf("    %d\n", digitsCV[i]);
-    printf("\n");
-
-    if (!numDigitsCV)
-        return;
-
-    printf("  The last %s digit seen from the LSD "
-        "(toward the MSD) is\n", (isEvenCV) ? "even" : "odd");
-    printf("    %d\n", digitsCV[numDigitsCV - 1]);
-    printf("\n");
-
-    printf("   And, there is/are %d %s digit(s).\n",
-        totalDigitsCV - numDigitsCV, (isEvenCV) ? "odd" : "even");
+    printf("  There is/are %d other unique odd digit(s) as follows,\n",
+        getNumDigitsCV(occurencesCV)-1);
+    for (int i = 1; i < largestOddDigitCV; i += 2)
+        if (occurencesCV[i] > 0)
+            printf("    Digit %d seen %d time(s)\n",
+                i, occurencesCV[i]);
     printf("\n");
 }
 
-void getDigitsChanceV(int valueCV, int arrBufferCV[], int* numDigitsCV, int* totalDigitsCV, int useEvenCV)
+void getDigitsChanceV(int valueCV, int arrBufferCV[], int* numDigitsCV, int* currentIndexCV, int useEvenCV)
 {
-    int countCV = 0;
     int digitsCV = 0;
     valueCV = (valueCV < 0) ? -valueCV : valueCV;
 
@@ -137,15 +136,31 @@ void getDigitsChanceV(int valueCV, int arrBufferCV[], int* numDigitsCV, int* tot
     {
         if (valueCV % 2 != useEvenCV)
         {
-            arrBufferCV[digitsCV] = valueCV % 10;
+            arrBufferCV[*currentIndexCV+digitsCV] = valueCV % 10;
             digitsCV++;
         }
         valueCV /= 10;
-        countCV++;
-        (*totalDigitsCV)++;
     }
 
     *numDigitsCV = digitsCV;
+    *currentIndexCV += digitsCV;
+}
+
+void getOccurrencesChanceV(int digitsCV[], int digitSizeCV, int occurrencesBufferCV[])
+{
+    for (int i = 0; i < digitSizeCV; i++)
+        occurrencesBufferCV[digitsCV[i]]++;
+}
+
+int getNumDigitsCV(int digitsCV[])
+{
+    int numDigitsCV = 0;
+
+    for (int i = 0; i < DIGIT_SIZE; i++)
+        if (digitsCV[i] > 0)
+            numDigitsCV++;
+
+    return numDigitsCV;
 }
 
 /* PROGRAM_OUTPUT:
