@@ -43,7 +43,7 @@ void displayClassInfoChanceV()
 void displayMenuChanceV()
 {
     printf("********************************************\n"
-           "*             MENU - Homework 1            *\n"
+           "*             MENU - Final Exam            *\n"
            "* (1) Calling displayFunDigitInfoChanceV() *\n"
            "* (2) Quit                                 *\n"
            "********************************************\n");

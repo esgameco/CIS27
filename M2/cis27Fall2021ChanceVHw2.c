@@ -46,7 +46,7 @@ void displayClassInfoChanceV()
 void displayMenuChanceV()
 {
     printf("************************************************\n"
-           "*               MENU - Homework 2              *\n"
+           "*                 MENU - HW #2                 *\n"
            "* (1) Calling displayOddDigitForArrayChanceV() *\n"
            "* (2) Quit                                     *\n"
            "************************************************\n");
@@ -79,7 +79,7 @@ void runMenuChanceV()
             }
 
             printf("\nCalling displayOddDigitForArrayChanceV()"
-                " with an array of size %d --\n\n", numIntsCV);
+                " with an array of size %d -\n\n", numIntsCV);
             displayOddDigitForArrayChanceV(intsCV, numIntsCV);
             break;
         case 2:
@@ -172,160 +172,123 @@ Laney College
 Chance Vodnoy
 
 Information --
-  Assignment: HW #1
+  Assignment: HW #2
   Implemented by: Chance Vodnoy
-  Submitted Date: 2021/09/09
+  Submitted Date: 2021/09/23
   Current Number of LEB available: 2
   Allowed Number of LEB Used: 0
   Remaining Number of LEB: 2
 
-********************************************
-*             MENU - Final Exam            *
-* (1) Calling displayFunDigitInfoChanceV() *
-* (2) Quit                                 *
-********************************************
+************************************************
+*                 MENU - HW #2                 *
+* (1) Calling displayOddDigitForArrayChanceV() *
+* (2) Quit                                     *
+************************************************
 Enter an integer for option + ENTER: 6
 
 Wrong option!
 
-********************************************
-*             MENU - Final Exam            *
-* (1) Calling displayFunDigitInfoChanceV() *
-* (2) Quit                                 *
-********************************************
+************************************************
+*                 MENU - HW #2                 *
+* (1) Calling displayOddDigitForArrayChanceV() *
+* (2) Quit                                     *
+************************************************
 Enter an integer for option + ENTER: -1
 
 Wrong option!
 
-********************************************
-*             MENU - Final Exam            *
-* (1) Calling displayFunDigitInfoChanceV() *
-* (2) Quit                                 *
-********************************************
+************************************************
+*                 MENU - HW #2                 *
+* (1) Calling displayOddDigitForArrayChanceV() *
+* (2) Quit                                     *
+************************************************
 Enter an integer for option + ENTER: 1
 
-Enter an integer: -9
+How many int's? 2
 
-Calling displayFunDigitInfoChanceV() with argument of -9 --
+Enter value #1: -9
+Enter value #2: 365
 
-  While displayFunDigitInfoChanceV() is running -
+Calling displayOddDigitForArrayChanceV() with an array of size 2 -
 
-  -9 is a negative and odd integer.
-  There must be at least ONE odd digit!
-
-  Actually, there is/are 1 odd digit(s) of
+  There is/are 3 odd digits of
     9
+    5
+    3
+  The largest odd digit is 9, which is seen 1 time(s).
 
-  The last odd digit seen from the LSD (toward the MSD) is
+  There is/are 2 other unique odd digit(s) as follows,
+    Digit 3 seen 1 time(s)
+    Digit 5 seen 1 time(s)
+
+************************************************
+*                 MENU - HW #2                 *
+* (1) Calling displayOddDigitForArrayChanceV() *
+* (2) Quit                                     *
+************************************************
+Enter an integer for option + ENTER: 1
+
+How many int's? 3
+
+Enter value #1: 365
+Enter value #2: -9
+Enter value #3: 3635
+
+Calling displayOddDigitForArrayChanceV() with an array of size 3 -
+
+  There is/are 6 odd digits of
+    5
+    3
     9
+    5
+    3
+    3
+  The largest odd digit is 9, which is seen 1 time(s).
 
-   And, there is/are 0 even digit(s).
+  There is/are 2 other unique odd digit(s) as follows,
+    Digit 3 seen 3 time(s)
+    Digit 5 seen 2 time(s)
 
-********************************************
-*             MENU - Final Exam            *
-* (1) Calling displayFunDigitInfoChanceV() *
-* (2) Quit                                 *
-********************************************
+************************************************
+*                 MENU - HW #2                 *
+* (1) Calling displayOddDigitForArrayChanceV() *
+* (2) Quit                                     *
+************************************************
 Enter an integer for option + ENTER: 1
 
-Enter an integer: -13054
+How many int's? 4
 
-Calling displayFunDigitInfoChanceV() with argument of -13054 --
+Enter value #1: 365
+Enter value #2: -9
+Enter value #3: 36359
+Enter value #4: -45677654
 
-  While displayFunDigitInfoChanceV() is running -
+Calling displayOddDigitForArrayChanceV() with an array of size 4 -
 
-  -13054 is a negative and even integer.
-  There must be at least ONE even digit!
-
-  Actually, there is/are 2 even digit(s) of
-    4
-    0
-
-  The last even digit seen from the LSD (toward the MSD) is
-    0
-
-   And, there is/are 3 odd digit(s).
-
-********************************************
-*             MENU - Final Exam            *
-* (1) Calling displayFunDigitInfoChanceV() *
-* (2) Quit                                 *
-********************************************
-Enter an integer for option + ENTER: 1
-
-Enter an integer: 3450486
-
-Calling displayFunDigitInfoChanceV() with argument of 3450486 --
-
-  While displayFunDigitInfoChanceV() is running -
-
-  3450486 is a positive and even integer.
-  There must be at least ONE even digit!
-
-  Actually, there is/are 5 even digit(s) of
-    6
-    8
-    4
-    0
-    4
-
-  The last even digit seen from the LSD (toward the MSD) is
-    4
-
-   And, there is/are 2 odd digit(s).
-
-********************************************
-*             MENU - Final Exam            *
-* (1) Calling displayFunDigitInfoChanceV() *
-* (2) Quit                                 *
-********************************************
-Enter an integer for option + ENTER: 1
-
-Enter an integer: 80316539
-
-Calling displayFunDigitInfoChanceV() with argument of 80316539 --
-
-  While displayFunDigitInfoChanceV() is running -
-
-  80316539 is a positive and odd integer.
-  There must be at least ONE odd digit!
-
-  Actually, there is/are 5 odd digit(s) of
+  There is/are 11 odd digits of
+    5
+    3
     9
+    9
+    5
+    3
     3
     5
-    1
-    3
+    7
+    7
+    5
+  The largest odd digit is 9, which is seen 2 time(s).
 
-  The last odd digit seen from the LSD (toward the MSD) is
-    3
+  There is/are 3 other unique odd digit(s) as follows,
+    Digit 3 seen 3 time(s)
+    Digit 5 seen 4 time(s)
+    Digit 7 seen 2 time(s)
 
-   And, there is/are 3 even digit(s).
-
-********************************************
-*             MENU - Final Exam            *
-* (1) Calling displayFunDigitInfoChanceV() *
-* (2) Quit                                 *
-********************************************
-Enter an integer for option + ENTER: 1
-
-Enter an integer: 0
-
-Calling displayFunDigitInfoChanceV() with argument of 0 --
-
-  While displayFunDigitInfoChanceV() is running -
-
-  ZERO is given!
-
-  How many digit(s)? 1
-
-  Only the martian can claim ZERO is, perhaps, not EVEN!
-
-********************************************
-*             MENU - Final Exam            *
-* (1) Calling displayFunDigitInfoChanceV() *
-* (2) Quit                                 *
-********************************************
+************************************************
+*                 MENU - HW #2                 *
+* (1) Calling displayOddDigitForArrayChanceV() *
+* (2) Quit                                     *
+************************************************
 Enter an integer for option + ENTER: 2
 
 Have fun!
