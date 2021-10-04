@@ -24,6 +24,9 @@
     <ClCompile Include="cis27Fall2021ChanceVHwTemplate.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="stringin.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cis27Lib.h">

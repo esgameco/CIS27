@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cis27ChanceVHw2Utility.c" />
     <ClCompile Include="cis27Fall2021ChanceVHw2.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cis27ChanceVHw2Utility.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

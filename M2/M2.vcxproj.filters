@@ -18,5 +18,13 @@
     <ClCompile Include="cis27Fall2021ChanceVHw2.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="cis27ChanceVHw2Utility.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cis27ChanceVHw2Utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="cis27Fall2021ChanceVHwTemplate.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="stringin.c" />
     <ClCompile Include="testArrays.c" />
   </ItemGroup>
   <ItemGroup>
