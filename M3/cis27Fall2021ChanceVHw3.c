@@ -8,9 +8,6 @@
 #include <stdio.h>
 #include "cis27ChanceVHw3Utility.h"
 
-// Main Errors:
-//     -Result gets added to the second element of the linked list instead of adding a new node
-
 int main()
 {
     displayClassInfoChanceV();

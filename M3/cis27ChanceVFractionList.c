@@ -1,14 +1,14 @@
 #include "cis27ChanceVFractionList.h"
 
-struct FractionNodeCV* createNodeChanceV(struct FractionCV* fraction)
+TFractionNodePtrChanceV createNodeChanceV(TFractionPtrChanceV fraction)
 {
-	struct FractionNodeCV* newNodeCV = malloc(sizeof(struct FractionNodeCV));
+	TFractionNodePtrChanceV newNodeCV = malloc(sizeof(TFractionNodeChanceV));
 	newNodeCV->fractionCV = fraction;
 	newNodeCV->nextCV = NULL;
 	return newNodeCV;
 }
 
-void deleteNodeChanceV(struct FractionNodeCV** nodeCV)
+void deleteNodeChanceV(TFractionNodePtrChanceV* nodeCV)
 {
 	deleteFractionChanceV(&((*nodeCV)->fractionCV));
 	(*nodeCV)->nextCV = NULL;
@@ -16,7 +16,7 @@ void deleteNodeChanceV(struct FractionNodeCV** nodeCV)
 	(*nodeCV) = NULL;
 }
 
-void deleteAllNodesChanceV(struct FractionNodeCV** nodeCV)
+void deleteAllNodesChanceV(TFractionNodePtrChanceV* nodeCV)
 {
 	if (!(*nodeCV))
 		return;
@@ -29,12 +29,12 @@ void deleteAllNodesChanceV(struct FractionNodeCV** nodeCV)
 	deleteNodeChanceV(nodeCV);
 }
 
-void addNodeChanceV(struct FractionNodeCV* nodeCV, struct FractionCV* fractionCV)
+void addNodeChanceV(TFractionNodePtrChanceV nodeCV, TFractionPtrChanceV fractionCV)
 {
 	nodeCV->nextCV = createNodeChanceV(fractionCV);
 }
 
-void updateNodeChanceV(int nodeNumCV, struct FractionNodeCV* nodeCV, struct FractionCV* fractionCV)
+void updateNodeChanceV(int nodeNumCV, TFractionNodePtrChanceV nodeCV, TFractionPtrChanceV fractionCV)
 {
 	if (nodeNumCV > 0)
 	{

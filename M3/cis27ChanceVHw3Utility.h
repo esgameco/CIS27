@@ -10,14 +10,14 @@ void displayMenuChanceV();
 void displayCreationSubmenuChanceV();
 void displayArithmeticSubmenuChanceV();
 void runMenuChanceV();
-void runCreationSubmenuChanceV(struct FractionNodeCV** headCV);
-void runArithmeticSubmenuChanceV(struct FractionNodeCV** headCV);
-void submitResultChanceV(struct FractionNodeCV* headCV, struct FractionCV* fractionCV);
-void updateFractionObjectChanceV(int fractionNumberCV, struct FractionNodeCV** headCV);
-void createFractionObjectsChanceV(struct FractionNodeCV** headCV);
+void runCreationSubmenuChanceV(TFractionNodePtrChanceV* headCV);
+void runArithmeticSubmenuChanceV(TFractionNodePtrChanceV* headCV);
+void submitResultChanceV(TFractionNodePtrChanceV headCV, TFractionPtrChanceV fractionCV);
+void updateFractionObjectChanceV(int fractionNumberCV, TFractionNodePtrChanceV* headCV);
+void createFractionObjectsChanceV(TFractionNodePtrChanceV* headCV);
 void getFractionDataChanceV(int* numCV, int* denCV, int);
 void getValidIntChanceV(int* valCV, char* prompt, int);
-void displayFractionObjectsChanceV(struct FractionNodeCV* headCV);
-void displayFractionDataChanceV(struct FractionNodeCV* fractionNodeCV);
+void displayFractionObjectsChanceV(TFractionNodePtrChanceV headCV);
+void displayFractionDataChanceV(TFractionNodePtrChanceV fractionNodeCV);
 
 #endif

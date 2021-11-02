@@ -4,17 +4,20 @@
 #ifdef FRACTION
 #define FRACTION_NODE
 
-struct FractionNodeCV
+typedef struct FractionNodeChanceV TFractionNodeChanceV;
+typedef struct FractionNodeChanceV* TFractionNodePtrChanceV;
+
+struct FractionNodeChanceV
 {
-	struct FractionCV* fractionCV;
-	struct FractionNodeCV* nextCV;
+	TFractionPtrChanceV fractionCV;
+	TFractionNodePtrChanceV nextCV;
 };
 
-struct FractionNodeCV* createNodeChanceV(struct FractionCV* fraction);
-void deleteNodeChanceV(struct FractionNodeCV** nodeCV);
-void deleteAllNodesChanceV(struct FractionNodeCV** nodeCV);
-void addNodeChanceV(struct FractionNodeCV* nodeCV, struct FractionCV* fractionCV);
-void updateNodeChanceV(int nodeNumCV, struct FractionNodeCV* nodeCV, struct FractionCV* fractionCV);
+TFractionNodePtrChanceV createNodeChanceV(TFractionPtrChanceV fraction);
+void deleteNodeChanceV(TFractionNodePtrChanceV* nodeCV);
+void deleteAllNodesChanceV(TFractionNodePtrChanceV* nodeCV);
+void addNodeChanceV(TFractionNodePtrChanceV nodeCV, TFractionPtrChanceV fractionCV);
+void updateNodeChanceV(int nodeNumCV, TFractionNodePtrChanceV nodeCV, TFractionPtrChanceV fractionCV);
 
 #endif
 #endif

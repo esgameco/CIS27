@@ -53,7 +53,7 @@ void displayArithmeticSubmenuChanceV()
 void runMenuChanceV()
 {
     int optionCV = 0;
-    struct FractionNodeCV* headCV = NULL;
+    TFractionNodePtrChanceV headCV = NULL;
 
     while (optionCV != 5)
     {
@@ -91,7 +91,7 @@ void runMenuChanceV()
     }
 }
 
-void runCreationSubmenuChanceV(struct FractionNodeCV** headCV)
+void runCreationSubmenuChanceV(TFractionNodePtrChanceV* headCV)
 {
     int optionCV = 0;
 
@@ -122,7 +122,7 @@ void runCreationSubmenuChanceV(struct FractionNodeCV** headCV)
     }
 }
 
-void runArithmeticSubmenuChanceV(struct FractionNodeCV** headCV)
+void runArithmeticSubmenuChanceV(TFractionNodePtrChanceV* headCV)
 {
     int optionCV = 0;
 
@@ -158,7 +158,7 @@ void runArithmeticSubmenuChanceV(struct FractionNodeCV** headCV)
     }
 }
 
-void submitResultChanceV(struct FractionNodeCV* headCV, struct FractionCV* fractionCV)
+void submitResultChanceV(TFractionNodePtrChanceV headCV, TFractionPtrChanceV fractionCV)
 {
     if (!headCV->nextCV->nextCV)
         addNodeChanceV(headCV->nextCV, fractionCV);
@@ -166,10 +166,12 @@ void submitResultChanceV(struct FractionNodeCV* headCV, struct FractionCV* fract
     {
         deleteFractionChanceV(&headCV->nextCV->nextCV->fractionCV);
         headCV->nextCV->nextCV->fractionCV = fractionCV;
+        // could use:
+        // updateNodeChanceV(2, headCV, fractionCV);
     }
 }
 
-void updateFractionObjectChanceV(int fractionNumberCV, struct FractionNodeCV** headCV)
+void updateFractionObjectChanceV(int fractionNumberCV, TFractionNodePtrChanceV* headCV)
 {
     int num, den = 0;
     struct Fraction* newFraction;
@@ -181,7 +183,7 @@ void updateFractionObjectChanceV(int fractionNumberCV, struct FractionNodeCV** h
     printf("\n");
 }
 
-void createFractionObjectsChanceV(struct FractionNodeCV** headCV)
+void createFractionObjectsChanceV(TFractionNodePtrChanceV* headCV)
 {
     int num, den = 0;
     if (!(*headCV))
@@ -219,7 +221,7 @@ void getValidIntChanceV(int* valCV, char* prompt, int nSpacesCV)
     }
 }
 
-void displayFractionObjectsChanceV(struct FractionNodeCV* headCV)
+void displayFractionObjectsChanceV(TFractionNodePtrChanceV headCV)
 {
     if (headCV)
     {
@@ -240,7 +242,7 @@ void displayFractionObjectsChanceV(struct FractionNodeCV* headCV)
     printf("\n");
 }
 
-void displayFractionDataChanceV(struct FractionNodeCV* fractionNodeCV)
+void displayFractionDataChanceV(TFractionNodePtrChanceV fractionNodeCV)
 {
     if (fractionNodeCV && fractionNodeCV->fractionCV)
     {

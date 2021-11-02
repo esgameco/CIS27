@@ -3,15 +3,18 @@
 #ifndef FRACTION
 #define FRACTION
 
-struct FractionCV
+typedef struct FractionChanceV TFractionChanceV;
+typedef struct FractionChanceV* TFractionPtrChanceV;
+
+struct FractionChanceV
 {
 	int numCV;
 	int denCV;
 };
 
-struct FractionCV* createFractionChanceV(int num, int den);
-void deleteFractionChanceV(struct FractionCV** fraction);
-struct FractionCV* addFractionsChanceV(struct FractionCV* fraction1CV, struct FractionCV* fraction2CV);
-struct FractionCV* multiplyFractionsChanceV(struct FractionCV* fraction1CV, struct FractionCV* fraction2CV);
+TFractionPtrChanceV createFractionChanceV(int num, int den);
+void deleteFractionChanceV(TFractionPtrChanceV* fraction);
+TFractionPtrChanceV addFractionsChanceV(TFractionPtrChanceV fraction1CV, TFractionPtrChanceV fraction2CV);
+TFractionPtrChanceV multiplyFractionsChanceV(TFractionPtrChanceV fraction1CV, TFractionPtrChanceV fraction2CV);
 
 #endif
