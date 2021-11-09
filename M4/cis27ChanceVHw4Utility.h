@@ -2,23 +2,18 @@
 
 #include "cis27ChanceVFractionList.h"
 
-#ifndef HW3_UTILITY
-#define HW3_UTILITY
+#ifndef HW4_UTILITY
+#define HW4_UTILITY
 
 void displayClassInfoChanceV();
 void displayMenuChanceV();
-void displayCreationSubmenuChanceV();
-void displayArithmeticSubmenuChanceV();
 void runMenuChanceV();
 void checkFractionPalindromes(TFractionNodePtrChanceV* headCV);
 int checkFractionPalindrome(TFractionPtrChanceV fractionCV);
 int checkPalindrome(int* digits);
 int* getDigits(int value);
-void runCreationSubmenuChanceV(TFractionNodePtrChanceV* headCV);
-void runArithmeticSubmenuChanceV(TFractionNodePtrChanceV* headCV);
-void submitResultChanceV(TFractionNodePtrChanceV headCV, TFractionPtrChanceV fractionCV);
-void updateFractionObjectChanceV(int fractionNumberCV, TFractionNodePtrChanceV* headCV);
-void createFractionObjectsChanceV(TFractionNodePtrChanceV* headCV);
+void insertFirstChanceV(TFractionNodePtrChanceV* headCV);
+void removeFirstChanceV(TFractionNodePtrChanceV* headCV);
 void getFractionDataChanceV(int* numCV, int* denCV, int);
 void getValidIntChanceV(int* valCV, char* prompt, int);
 void displayFractionObjectsChanceV(TFractionNodePtrChanceV headCV);

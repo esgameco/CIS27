@@ -3,6 +3,12 @@
 #define HW_NUM 3
 #define DATE "2021/10/17"
 
+#define BUFFER_LEN 20
+
+#ifdef _WIN32
+#define scanf scanf_s
+#endif
+
 void displayClassInfoChanceV()
 {
     printf("CIS 27-Data Structures\n"
@@ -20,34 +26,34 @@ void displayClassInfoChanceV()
 void displayMenuChanceV()
 {
     printf("**************************************************\n"
-           "*                 MENU - HW #3                   *\n"
-           "* (1) Creating/Updating 2 Fraction Data Objects  *\n"
-           "* (2) Checking for Palindrome                    *\n"
-           "* (3) Performing Arithmetic Operations (+, -, *) *\n"
-           "* (4) Displaying Selected Fraction Data Object   *\n"
-           "* (5) Quit                                       *\n"
-           "**************************************************\n");
+        "*                 MENU - HW #3                   *\n"
+        "* (1) Creating/Updating 2 Fraction Data Objects  *\n"
+        "* (2) Checking for Palindrome                    *\n"
+        "* (3) Performing Arithmetic Operations (+, -, *) *\n"
+        "* (4) Displaying Selected Fraction Data Object   *\n"
+        "* (5) Quit                                       *\n"
+        "**************************************************\n");
 }
 
 void displayCreationSubmenuChanceV()
 {
     printf("    ***************************************\n"
-           "    *     Creating/Updating Submenu       *\n"
-           "    * (1) Creating 2 Fraction objects     *\n"
-           "    * (2) Updating First Fraction object  *\n"
-           "    * (3) Updating Second Fraction object *\n"
-           "    * (4) Returning                       *\n"
-           "    ***************************************\n");
+        "    *     Creating/Updating Submenu       *\n"
+        "    * (1) Creating 2 Fraction objects     *\n"
+        "    * (2) Updating First Fraction object  *\n"
+        "    * (3) Updating Second Fraction object *\n"
+        "    * (4) Returning                       *\n"
+        "    ***************************************\n");
 }
 
 void displayArithmeticSubmenuChanceV()
 {
     printf("    ***************************************\n"
-           "    *     Arithmetic Operations Submenu   *\n"
-           "    * (1) Adding                          *\n"
-           "    * (2) Multiplying                     *\n"
-           "    * (3) Returning                       *\n"
-           "    ***************************************\n");
+        "    *     Arithmetic Operations Submenu   *\n"
+        "    * (1) Adding                          *\n"
+        "    * (2) Multiplying                     *\n"
+        "    * (3) Returning                       *\n"
+        "    ***************************************\n");
 }
 
 void runMenuChanceV()
@@ -59,7 +65,7 @@ void runMenuChanceV()
     {
         displayMenuChanceV();
         printf("Enter an integer for option + ENTER: ");
-        scanf_s("%d", &optionCV);
+        scanf("%d", &optionCV);
         printf("\n");
 
         switch (optionCV)
@@ -69,7 +75,7 @@ void runMenuChanceV()
             runCreationSubmenuChanceV(&headCV);
             break;
         case 2:
-            // TODO: Understand what palindrome does
+            checkFractionPalindromes(&headCV);
             break;
         case 3:
             runArithmeticSubmenuChanceV(&headCV);
@@ -91,6 +97,70 @@ void runMenuChanceV()
     }
 }
 
+void checkFractionPalindromes(TFractionNodePtrChanceV* headCV)
+{
+    if (!(*headCV))
+    {
+        printf("  Not appropriate as there are no Fraction objects!\n\n");
+        return 0;
+    }
+
+    printf("    First Fraction: %s\n",
+        (checkFractionPalindrome((*headCV)->fractionCV))
+        ? "Yes" : "No");
+    printf("    Second Fraction: %s\n\n",
+        (checkFractionPalindrome((*headCV)->nextCV->fractionCV))
+        ? "Yes" : "No");
+}
+
+int checkFractionPalindrome(TFractionPtrChanceV fractionCV)
+{
+    int* numDigits = getDigits(fractionCV->numCV);
+    int* denDigits = getDigits(fractionCV->denCV);
+    int isPalindrome = checkPalindrome(numDigits) &&
+        checkPalindrome(denDigits);
+
+    free(numDigits);
+    free(denDigits);
+
+    return isPalindrome;
+}
+
+int checkPalindrome(int* digits)
+{
+    int length = 0;
+    while (digits[length++] != -1);
+    length--;
+
+    for (int i = 0; i < length; i++)
+    {
+        if (digits[i] != digits[length - i - 1])
+            return 0;
+    }
+
+    return 1;
+}
+
+int* getDigits(int value)
+{
+    int* arr = malloc(BUFFER_LEN * sizeof(int));
+    int current = 0;
+
+    value = (value > 0) ? value : -value;
+
+    for (int i = 0; i < BUFFER_LEN; i++)
+        arr[i] = -1;
+
+    while (value)
+    {
+        arr[current] = value % 10;
+        value /= 10;
+        current++;
+    }
+
+    return arr;
+}
+
 void runCreationSubmenuChanceV(TFractionNodePtrChanceV* headCV)
 {
     int optionCV = 0;
@@ -99,7 +169,11 @@ void runCreationSubmenuChanceV(TFractionNodePtrChanceV* headCV)
     {
         displayCreationSubmenuChanceV();
         printf("    Enter an integer for option + ENTER: ");
-        scanf_s("%d", &optionCV);
+//#ifdef _WIN32
+//        scanf_s("%d", &optionCV);
+//#else
+        scanf("%d", &optionCV);
+//#endif
         printf("\n");
 
         switch (optionCV)
@@ -109,10 +183,12 @@ void runCreationSubmenuChanceV(TFractionNodePtrChanceV* headCV)
             break;
         case 2:
             updateFractionObjectChanceV(0, headCV);
-            break;
+            printf("    Returning to previous menu!\n\n");
+            return;
         case 3:
             updateFractionObjectChanceV(1, headCV);
-            break;
+            printf("    Returning to previous menu!\n\n");
+            return;
         case 4:
             printf("    Returning to previous menu!\n\n");
             break;
@@ -130,7 +206,11 @@ void runArithmeticSubmenuChanceV(TFractionNodePtrChanceV* headCV)
     {
         displayArithmeticSubmenuChanceV();
         printf("    Enter an integer for option + ENTER: ");
-        scanf_s("%d", &optionCV);
+//#ifdef _WIN32
+//        scanf_s("%d", &optionCV);
+//#else
+        scanf("%d", &optionCV);
+//#endif
         printf("\n");
 
         switch (optionCV)
@@ -165,9 +245,9 @@ void submitResultChanceV(TFractionNodePtrChanceV headCV, TFractionPtrChanceV fra
     else
     {
         deleteFractionChanceV(&headCV->nextCV->nextCV->fractionCV);
-        headCV->nextCV->nextCV->fractionCV = fractionCV;
+        //headCV->nextCV->nextCV->fractionCV = fractionCV;
         // could use:
-        // updateNodeChanceV(2, headCV, fractionCV);
+        updateNodeChanceV(2, headCV, fractionCV);
     }
 }
 
@@ -176,7 +256,11 @@ void updateFractionObjectChanceV(int fractionNumberCV, TFractionNodePtrChanceV* 
     int num, den = 0;
     struct Fraction* newFraction;
 
-    getFractionDataChanceV(&num, &den, 6);
+    printf("      Fraction Objects exist --\n"
+        "        Updating Process --\n");
+
+    printf("          %s Object --\n", (fractionNumberCV == 0) ? "First" : "Second");
+    getFractionDataChanceV(&num, &den, 12);
     newFraction = createFractionChanceV(num, den);
 
     updateNodeChanceV(fractionNumberCV, *headCV, newFraction);
@@ -200,6 +284,10 @@ void createFractionObjectsChanceV(TFractionNodePtrChanceV* headCV)
         getFractionDataChanceV(&num, &den, 12);
         addNodeChanceV(*headCV, createFractionChanceV(num, den));
     }
+    else
+    {
+        printf("      Fraction Objects exist - Choose Update or Quit!\n");
+    }
     printf("\n");
 }
 
@@ -215,7 +303,11 @@ void getValidIntChanceV(int* valCV, char* prompt, int nSpacesCV)
     while (!(*valCV))
     {
         printf("%*c%s", nSpacesCV, ' ', prompt);
-        scanf_s("%d", valCV);
+//#ifdef _WIN32
+//        scanf_s("%d", valCV);
+//#else
+        scanf("%d", valCV);
+//#endif
         if (!(*valCV))
             printf("              0 is not allowed!\n\n");
     }

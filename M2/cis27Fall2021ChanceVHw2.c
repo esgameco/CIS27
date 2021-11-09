@@ -14,6 +14,10 @@
 #include <stdio.h>
 #include "cis27ChanceVHw2Utility.h"
 
+#ifdef _WIN32
+#define scanf scanf_s
+#endif
+
 void displayClassInfoChanceV();
 void displayMenuChanceV();
 void runMenuChanceV();
@@ -59,7 +63,7 @@ void runMenuChanceV()
     {
         displayMenuChanceV();
         printf("Enter an integer for option + ENTER: ");
-        scanf_s("%d", &optionCV);
+        scanf("%d", &optionCV);
         printf("\n");
 
         switch (optionCV)
@@ -68,7 +72,7 @@ void runMenuChanceV()
             while (numIntsCV <= 0)
             {
                 printf("How many int's (> 0)? ");
-                scanf_s("%d", &numIntsCV);
+                scanf("%d", &numIntsCV);
             }
             printf("\n");
 
@@ -77,7 +81,7 @@ void runMenuChanceV()
             for (int i = 0; i < numIntsCV; i++)
             {
                 printf("Enter value #%d: ", i + 1);
-                scanf_s("%d", &intsCV[i]);
+                scanf("%d", &intsCV[i]);
             }
 
             printf("\nCalling displayOddDigitForArrayChanceV()"

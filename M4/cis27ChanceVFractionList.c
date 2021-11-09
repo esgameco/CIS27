@@ -8,12 +8,16 @@ TFractionNodePtrChanceV createNodeChanceV(TFractionPtrChanceV fraction)
 	return newNodeCV;
 }
 
-void deleteNodeChanceV(TFractionNodePtrChanceV* nodeCV)
+TFractionNodePtrChanceV deleteNodeChanceV(TFractionNodePtrChanceV* nodeCV)
 {
+	TFractionNodePtrChanceV nextCV = (*nodeCV)->nextCV;
+
 	deleteFractionChanceV(&((*nodeCV)->fractionCV));
-	(*nodeCV)->nextCV = NULL;
+	//(*nodeCV)->nextCV = NULL;
 	free(*nodeCV);
 	(*nodeCV) = NULL;
+
+	return nextCV;
 }
 
 void deleteAllNodesChanceV(TFractionNodePtrChanceV* nodeCV)
