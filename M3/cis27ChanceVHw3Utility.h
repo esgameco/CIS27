@@ -1,9 +1,9 @@
-#include <stdio.h>
+#ifndef HW3_UTILITY
+#define HW3_UTILITY
 
 #include "cis27ChanceVFractionList.h"
 
-#ifndef HW3_UTILITY
-#define HW3_UTILITY
+#include <stdio.h>
 
 void displayClassInfoChanceV();
 void displayMenuChanceV();

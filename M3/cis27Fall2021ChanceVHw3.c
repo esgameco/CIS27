@@ -123,20 +123,20 @@ Enter an integer for option + ENTER: 1
 **************************************************
 Enter an integer for option + ENTER: 4
 
-      Displaying Fraction Objects -
+  Displaying Fraction Objects -
 
-        First Object --
-          Address: 01055588
-          num: -5
-          denom: 9
+    First Object --
+      Address: 01055588
+      num: -5
+      denom: 9
 
-        Second Object --
-          Address: 01055440
-          num: -1
-          denom: 30
+    Second Object --
+      Address: 01055440
+      num: -1
+      denom: 30
 
-        Resulting Object --
-          Not Existing!
+    Resulting Object --
+      Not Existing!
 
 **************************************************
 *                 MENU - HW #3                   *
@@ -147,6 +147,8 @@ Enter an integer for option + ENTER: 4
 * (5) Quit                                       *
 **************************************************
 Enter an integer for option + ENTER: 2
+
+  Checking for Palindrome -
 
     First Fraction: Yes
     Second Fraction: No
@@ -191,22 +193,22 @@ Enter an integer for option + ENTER: 3
 **************************************************
 Enter an integer for option + ENTER: 4
 
-      Displaying Fraction Objects -
+  Displaying Fraction Objects -
 
-        First Object --
-          Address: 01055588
-          num: -5
-          denom: 9
+    First Object --
+      Address: 01055588
+      num: -5
+      denom: 9
 
-        Second Object --
-          Address: 01055440
-          num: -1
-          denom: 30
+    Second Object --
+      Address: 01055440
+      num: -1
+      denom: 30
 
-        Resulting Object --
-          Address: 01059B60
-          num: -53
-          denom: 90
+    Resulting Object --
+      Address: 01059B60
+      num: -53
+      denom: 90
 
 **************************************************
 *                 MENU - HW #3                   *
@@ -261,22 +263,22 @@ Enter an integer for option + ENTER: 1
 **************************************************
 Enter an integer for option + ENTER: 4
 
-      Displaying Fraction Objects -
+  Displaying Fraction Objects -
 
-        First Object --
-          Address: 01055700
-          num: -1
-          denom: 4
+    First Object --
+      Address: 01055700
+      num: -1
+      denom: 4
 
-        Second Object --
-          Address: 01055440
-          num: -1
-          denom: 30
+    Second Object --
+      Address: 01055440
+      num: -1
+      denom: 30
 
-        Resulting Object --
-          Address: 01059B60
-          num: -53
-          denom: 90
+    Resulting Object --
+      Address: 01059B60
+      num: -53
+      denom: 90
 
 **************************************************
 *                 MENU - HW #3                   *

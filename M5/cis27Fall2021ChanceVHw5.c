@@ -1,12 +1,12 @@
 ﻿/**
- * Program Name: cis27Fall2021ChanceVHw4.c
- * Discussion:   HW #4 - Fraction Application
+ * Program Name: cis27Fall2021ChanceVHw5.c
+ * Discussion:   HW #5 - Fraction Application
  * Written By:   Chance Vodnoy
- * Date:         2021/11/07
+ * Date:         2021/11/11
 */
 
 #include <stdio.h>
-#include "cis27ChanceVHw4Utility.h"
+#include "cis27ChanceVHw5Utility.h"
 
 int main()
 {
@@ -340,7 +340,7 @@ Enter an integer for option + ENTER: 2
 
   Checking for Palindrome -
 
-    There are no Palindrome Fraction's!
+     There are no Palindrome Fraction's!
      
 **********************************
 *           MENU - HW #4         *

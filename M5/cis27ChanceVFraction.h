@@ -1,7 +1,7 @@
+#include <stdlib.h>
+
 #ifndef FRACTION
 #define FRACTION
-
-#include <stdlib.h>
 
 typedef struct FractionChanceV TFractionChanceV;
 typedef struct FractionChanceV* TFractionPtrChanceV;

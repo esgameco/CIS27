@@ -75,6 +75,7 @@ void runMenuChanceV()
             runCreationSubmenuChanceV(&headCV);
             break;
         case 2:
+            printf("  Checking for Palindrome -\n\n");
             checkFractionPalindromes(&headCV);
             break;
         case 3:
@@ -169,11 +170,7 @@ void runCreationSubmenuChanceV(TFractionNodePtrChanceV* headCV)
     {
         displayCreationSubmenuChanceV();
         printf("    Enter an integer for option + ENTER: ");
-//#ifdef _WIN32
-//        scanf_s("%d", &optionCV);
-//#else
         scanf("%d", &optionCV);
-//#endif
         printf("\n");
 
         switch (optionCV)
@@ -206,11 +203,7 @@ void runArithmeticSubmenuChanceV(TFractionNodePtrChanceV* headCV)
     {
         displayArithmeticSubmenuChanceV();
         printf("    Enter an integer for option + ENTER: ");
-//#ifdef _WIN32
-//        scanf_s("%d", &optionCV);
-//#else
         scanf("%d", &optionCV);
-//#endif
         printf("\n");
 
         switch (optionCV)
@@ -245,8 +238,6 @@ void submitResultChanceV(TFractionNodePtrChanceV headCV, TFractionPtrChanceV fra
     else
     {
         deleteFractionChanceV(&headCV->nextCV->nextCV->fractionCV);
-        //headCV->nextCV->nextCV->fractionCV = fractionCV;
-        // could use:
         updateNodeChanceV(2, headCV, fractionCV);
     }
 }
@@ -303,11 +294,7 @@ void getValidIntChanceV(int* valCV, char* prompt, int nSpacesCV)
     while (!(*valCV))
     {
         printf("%*c%s", nSpacesCV, ' ', prompt);
-//#ifdef _WIN32
-//        scanf_s("%d", valCV);
-//#else
         scanf("%d", valCV);
-//#endif
         if (!(*valCV))
             printf("              0 is not allowed!\n\n");
     }
@@ -317,15 +304,15 @@ void displayFractionObjectsChanceV(TFractionNodePtrChanceV headCV)
 {
     if (headCV)
     {
-        printf("      Displaying Fraction Objects -\n\n");
+        printf("  Displaying Fraction Objects -\n\n");
 
-        printf("        First Object --\n");
+        printf("    First Object --\n");
         displayFractionDataChanceV(headCV);
 
-        printf("\n        Second Object --\n");
+        printf("\n    Second Object --\n");
         displayFractionDataChanceV(headCV->nextCV);
 
-        printf("\n        Resulting Object --\n");
+        printf("\n    Resulting Object --\n");
         displayFractionDataChanceV(headCV->nextCV->nextCV);
     }
     else
@@ -338,10 +325,10 @@ void displayFractionDataChanceV(TFractionNodePtrChanceV fractionNodeCV)
 {
     if (fractionNodeCV && fractionNodeCV->fractionCV)
     {
-        printf("          Address: %p\n", fractionNodeCV->fractionCV);
-        printf("          num: %d\n", fractionNodeCV->fractionCV->numCV);
-        printf("          denom: %d\n", fractionNodeCV->fractionCV->denCV);
+        printf("      Address: %p\n", fractionNodeCV->fractionCV);
+        printf("      num: %d\n", fractionNodeCV->fractionCV->numCV);
+        printf("      denom: %d\n", fractionNodeCV->fractionCV->denCV);
     }
     else
-        printf("          Not Existing!\n");
+        printf("      Not Existing!\n");
 }

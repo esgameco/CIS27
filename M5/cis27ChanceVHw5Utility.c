@@ -1,5 +1,14 @@
 #include "cis27ChanceVHw4Utility.h"
 
+#define HW_NUM 4
+#define DATE "2021/11/07"
+
+#define BUFFER_LEN 20
+
+#ifdef _WIN32
+#define scanf scanf_s
+#endif
+
 void displayClassInfoChanceV()
 {
     printf("CIS 27-Data Structures\n"
@@ -98,7 +107,7 @@ void checkFractionPalindromes(TFractionNodePtrChanceV* headCV)
     }
 
     if (!arePalin)
-        printf("    There are no Palindrome Fraction's!\n\n");
+        printf("     There are no Palindrome Fraction's!\n\n");
 
     iterCV = NULL;
 }
