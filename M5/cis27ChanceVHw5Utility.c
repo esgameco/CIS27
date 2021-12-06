@@ -1,13 +1,4 @@
-#include "cis27ChanceVHw4Utility.h"
-
-#define HW_NUM 4
-#define DATE "2021/11/07"
-
-#define BUFFER_LEN 20
-
-#ifdef _WIN32
-#define scanf scanf_s
-#endif
+#include "cis27ChanceVHw5Utility.h"
 
 void displayClassInfoChanceV()
 {
@@ -25,23 +16,48 @@ void displayClassInfoChanceV()
 
 void displayMenuChanceV()
 {
-    printf("**********************************\n"
-        "*           MENU - HW #4         *\n"
-        "* (1) Creating Fraction List     *\n"
-        "* (2) Checking for Palindrome    *\n"
-        "* (3) Inserting Fraction         *\n"
-        "* (4) Removing Fraction          *\n"
-        "* (5) Displaying Fraction List   *\n"
-        "* (6) Quit                       *\n"
-        "**********************************\n");
+    printf("***************************************\n"
+           "*           MENU - HW #5              *\n"
+           "* (1) Creating/Updating 2 Polynomials *\n"
+           "* (2) Evaluating 2 Polynomials        *\n"
+           "* (3) Checking for Palindrome         *\n"
+           "* (4) Adding 2 Polylynomials          *\n"
+           "* (5) Multiplying 2 Polynomials       *\n"
+           "* (6) Displaying 2 Polynomials        *\n"
+           "* (7) Display Resulting Polynomial    *\n"
+           "* (8) Quit                            *\n"
+           "***************************************\n");
+}
+
+void displayInitSubmenuChanceV()
+{
+    printf("  *********************************\n"
+           "  *         init() Submenu        *\n"
+           "  * (1) Creating 2 Polynomials    *\n"
+           "  * (2) Updating Polynomial 1     *\n"
+           "  * (3) Updating Polynomial 2     *\n"
+           "  * (4) Displaying 2 Polynomials  *\n"
+           "  * (5) Return                    *\n"
+           "  *********************************\n");
+}
+
+void displayUpdateSubmenuChanceV()
+{
+    printf("    *************************************\n"
+           "    *          update() Submenu         *\n"
+           "    * (1) Adding one term               *\n"
+           "    * (2) Removing one term             *\n"
+           "    * (3) Displaying updated Polynomial *\n"
+           "    * (4) Return                        *\n"
+           "    *************************************\n");
 }
 
 void runMenuChanceV()
 {
     int optionCV = 0;
-    TFractionNodePtrChanceV headCV = NULL;
+    TPolyPtrChanceV headCV = NULL;
 
-    while (optionCV != 6)
+    while (optionCV != 8)
     {
         displayMenuChanceV();
         printf("Enter an integer for option + ENTER: ");
@@ -51,27 +67,29 @@ void runMenuChanceV()
         switch (optionCV)
         {
         case 1:
-            printf("  Creating Fraction List using insertFirstChanceV() -\n\n");
-            insertFirstChanceV(&headCV);
+            printf("  Initializing 2 Polynomials -\n\n");
+            printf("    Calling initChanceV() -\n\n");
+            runInitSubmenuChanceV(&headCV);
             break;
         case 2:
-            printf("  Checking for Palindrome -\n\n");
-            checkFractionPalindromes(&headCV);
+            printf("  Evaluating Polynomials -\n\n");
             break;
         case 3:
             printf("  Inserting Fraction List using insertFirstChanceV() -\n\n");
-            insertFirstChanceV(&headCV);
             break;
         case 4:
-            printf("  Removing a Fraction node using removeFirstChanceV() -\n\n");
-            removeFirstChanceV(&headCV);
+            printf("  Adding 2 Polynomials -\n\n");
             break;
         case 5:
-            printf("  Displaying Fraction list -\n\n");
-            displayFractionObjectsChanceV(headCV);
+            printf("  Multiplying 2 Polynomials -\n\n");
             break;
         case 6:
-            printf("  Deallocating and Removing ALL Fraction's!\n\n");
+            printf("  Displaying the resulting Polynomial -\n\n");
+            break;
+        case 7:
+            printf("  Displaying the resulting Polynomial -\n\n");
+            break;
+        case 8:
             printf("Have fun!\n\n");
             break;
         default:
@@ -79,10 +97,123 @@ void runMenuChanceV()
         }
     }
 
-    if (headCV)
-        deleteAllNodesChanceV(&headCV);
+    // TODO: Change to polynomical nodes
+    //if (headCV)
+    //    deleteAllNodesChanceV(&headCV);
 }
 
+void runInitSubmenuChanceV(TPolyPtrChanceV* headCV)
+{
+    int optionCV = 0;
+
+    while (optionCV != 5)
+    {
+        displayInitSubmenuChanceV();
+        printf("  Enter an integer for option + ENTER: ");
+        scanf("%d", &optionCV);
+        printf("\n");
+
+        switch (optionCV)
+        {
+        case 1:
+            printf("      Creating 2 Polynonials -");
+            printf("        Calling create() -");
+            createChanceV(headCV);
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            printf("  Have fun!\n\n");
+            break;
+        default:
+            printf("  Wrong option!\n\n");
+        }
+    }
+}
+
+void runUpdateSubmenuChanceV(TPolyPtrChanceV* headCV)
+{
+    int optionCV = 0;
+
+    while (optionCV != 4)
+    {
+        displayMenuChanceV();
+        printf("Enter an integer for option + ENTER: ");
+        scanf("%d", &optionCV);
+        printf("\n");
+
+        switch (optionCV)
+        {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            printf("Have fun!\n\n");
+            break;
+        default:
+            printf("Wrong option!\n\n");
+        }
+    }
+}
+
+void createChanceV(TPolyPtrChanceV* headCV, int nTerms)
+{
+    TPolyPtrChanceV tailCV = *headCV;
+    int doNextTerm = 1;
+    int expo, num, denom;
+
+    for (int poly = 0; poly < nTerms; poly++)
+    {
+        printf("        Creating Poly #%d -\n\n", poly+1);
+
+        while (doNextTerm)
+        {
+            printf("          Is there a term (1 : yes, 0 : no)? ");
+            scanf("%d", &doNextTerm);
+
+            if (!doNextTerm)
+                break;
+
+            printf("            Enter expo: ");
+            scanf("%d", &expo);
+
+            printf("            Creating coeff Fraction: ");
+            printf("              Enter num: ");
+            scanf("%d", &num);
+            printf("              Enter denom: ");
+            scanf("%d", &denom);
+
+            pushBackPolyChanceV(&tailCV,
+                createPolyChanceV(
+                    createPolyTermChanceV(expo, 
+                        createFractionChanceV(num, denom)
+                    )
+                )
+            );
+        }
+
+        doNextTerm = 1;
+
+        tailCV = tailCV->nextCV;
+    }
+}
+
+void pushBackPolyChanceV(TPolyPtrChanceV* tailCV, TPolyPtrChanceV addCV)
+{
+    if (*tailCV)
+        (*tailCV)->nextCV = addCV;
+    else
+        *tailCV = addCV;
+}
+
+/*
 void checkFractionPalindromes(TFractionNodePtrChanceV* headCV)
 {
     TFractionNodePtrChanceV iterCV = *headCV;
@@ -239,3 +370,4 @@ void displayFractionDataChanceV(TFractionNodePtrChanceV fractionNodeCV, int disp
     else
         printf("          Not Existing!\n");
 }
+*/

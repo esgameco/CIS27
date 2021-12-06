@@ -13,7 +13,6 @@ TFractionNodePtrChanceV deleteNodeChanceV(TFractionNodePtrChanceV* nodeCV)
 	TFractionNodePtrChanceV nextCV = (*nodeCV)->nextCV;
 
 	deleteFractionChanceV(&((*nodeCV)->fractionCV));
-	//(*nodeCV)->nextCV = NULL;
 	free(*nodeCV);
 	(*nodeCV) = NULL;
 

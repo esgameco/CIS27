@@ -142,12 +142,16 @@
     <ClCompile Include="cis27ChanceVFraction.c" />
     <ClCompile Include="cis27ChanceVFractionList.c" />
     <ClCompile Include="cis27ChanceVHw5Utility.c" />
+    <ClCompile Include="cis27ChanceVPoly.c" />
+    <ClCompile Include="cis27ChanceVPolyTerm.c" />
     <ClCompile Include="cis27Fall2021ChanceVHw5.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cis27ChanceVFraction.h" />
     <ClInclude Include="cis27ChanceVFractionList.h" />
     <ClInclude Include="cis27ChanceVHw5Utility.h" />
+    <ClInclude Include="cis27ChanceVPoly.h" />
+    <ClInclude Include="cis27ChanceVPolyTerm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

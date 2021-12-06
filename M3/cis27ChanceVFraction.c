@@ -11,8 +11,11 @@ TFractionPtrChanceV createFractionChanceV(int numCV, int denCV)
 		denCV = -denCV;
 	}
 
-	newFractionChanceV->numCV = numCV / gcd;
-	newFractionChanceV->denCV = denCV / gcd;
+	if (newFractionChanceV != NULL)
+	{
+		newFractionChanceV->numCV = numCV / gcd;
+		newFractionChanceV->denCV = denCV / gcd;
+	}
 
 	return newFractionChanceV;
 }
@@ -44,10 +47,10 @@ int gcdChanceV(int x, int y)
 {
 	x = (x > 0) ? x : -x;
 	y = (y > 0) ? y : -y;
-	int higher = (x > y) ? x : y;
+	int lower = (x < y) ? x : y;
 	int gcd = 1;
 
-	for (int i = 1; i < higher; i++)
+	for (int i = 1; i < lower; i++)
 		if (x % i == 0 && y % i == 0)
 			gcd = i;
 
