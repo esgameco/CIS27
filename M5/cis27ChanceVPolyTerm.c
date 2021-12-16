@@ -21,3 +21,14 @@ TPolyTermPtrChanceV deletePolyTermChanceV(TPolyTermPtrChanceV* polyTermCV)
 
 	return nextCV;
 }
+
+TPolyTermPtrChanceV deleteLastPolyTermChanceV(TPolyTermPtrChanceV* polyTermCV)
+{
+	TPolyTermPtrChanceV nextCV = (*polyTermCV)->nextCV;
+
+	deleteFractionChanceV(&((*polyTermCV)->fractionCV));
+	free(*polyTermCV);
+	(*polyTermCV) = NULL;
+
+	return nextCV;
+}

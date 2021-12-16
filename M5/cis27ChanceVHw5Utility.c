@@ -31,31 +31,32 @@ void displayMenuChanceV()
 
 void displayInitSubmenuChanceV()
 {
-    printf("  *********************************\n"
-           "  *         init() Submenu        *\n"
-           "  * (1) Creating 2 Polynomials    *\n"
-           "  * (2) Updating Polynomial 1     *\n"
-           "  * (3) Updating Polynomial 2     *\n"
-           "  * (4) Displaying 2 Polynomials  *\n"
-           "  * (5) Return                    *\n"
-           "  *********************************\n");
+    printf("    *********************************\n"
+           "    *         init() Submenu        *\n"
+           "    * (1) Creating 2 Polynomials    *\n"
+           "    * (2) Updating Polynomial 1     *\n"
+           "    * (3) Updating Polynomial 2     *\n"
+           "    * (4) Displaying 2 Polynomials  *\n"
+           "    * (5) Return                    *\n"
+           "    *********************************\n");
 }
 
 void displayUpdateSubmenuChanceV()
 {
-    printf("    *************************************\n"
-           "    *          update() Submenu         *\n"
-           "    * (1) Adding one term               *\n"
-           "    * (2) Removing one term             *\n"
-           "    * (3) Displaying updated Polynomial *\n"
-           "    * (4) Return                        *\n"
-           "    *************************************\n");
+    printf("        *************************************\n"
+           "        *          update() Submenu         *\n"
+           "        * (1) Adding one term               *\n"
+           "        * (2) Removing one term             *\n"
+           "        * (3) Displaying updated Polynomial *\n"
+           "        * (4) Return                        *\n"
+           "        *************************************\n");
 }
 
 void runMenuChanceV()
 {
     int optionCV = 0;
     TPolyPtrChanceV headCV = NULL;
+    TPolyPtrChanceV resultCV = NULL;
 
     while (optionCV != 8)
     {
@@ -73,21 +74,36 @@ void runMenuChanceV()
             break;
         case 2:
             printf("  Evaluating Polynomials -\n\n");
+            evaluateChanceV(headCV, &resultCV);
             break;
         case 3:
-            printf("  Inserting Fraction List using insertFirstChanceV() -\n\n");
+            printf("  Checking Palindrome -\n\n");
+            checkFractionPalindromesChanceV(headCV, 1);
+            printf("\n");
+            checkFractionPalindromesChanceV(headCV->nextCV, 2);
+            printf("\n");
             break;
         case 4:
             printf("  Adding 2 Polynomials -\n\n");
+            deletePolyChanceV(&resultCV);
+            resultCV = addPolynomialsChanceV(headCV, headCV->nextCV);
             break;
         case 5:
             printf("  Multiplying 2 Polynomials -\n\n");
+            deletePolyChanceV(&resultCV);
+            resultCV = multiplyPolynomialsChanceV(headCV, headCV->nextCV);
+            displayPolynomialChanceV(resultCV, NULL);
             break;
         case 6:
-            printf("  Displaying the resulting Polynomial -\n\n");
+            if (headCV)
+                printf("  Displaying 2 Polynomials -\n\n");
+            else
+                printf("  Not appropriate as there are no Polynomials!\n\n");
+            displayPolynomialsChanceV(headCV);
             break;
         case 7:
             printf("  Displaying the resulting Polynomial -\n\n");
+            displayPolynomialChanceV(resultCV, NULL);
             break;
         case 8:
             printf("Have fun!\n\n");
@@ -109,53 +125,81 @@ void runInitSubmenuChanceV(TPolyPtrChanceV* headCV)
     while (optionCV != 5)
     {
         displayInitSubmenuChanceV();
-        printf("  Enter an integer for option + ENTER: ");
+        printf("    Enter an integer for option + ENTER: ");
         scanf("%d", &optionCV);
         printf("\n");
 
         switch (optionCV)
         {
         case 1:
-            printf("      Creating 2 Polynonials -");
-            printf("        Calling create() -");
-            createChanceV(headCV);
+            printf("    Creating 2 Polynonials -\n\n");
+            printf("      Calling create() -\n\n");
+            createChanceV(headCV, 2);
             break;
         case 2:
+            if (*headCV)
+            {
+                printf("      Updating Polynomial #1\n\n");
+                runUpdateSubmenuChanceV(*headCV, 1);
+            }
+            else
+                printf("    Not appropriate as there are no Polynomials!\n\n");
             break;
         case 3:
+            if (*headCV && (*headCV)->nextCV)
+            {
+                printf("      Updating Polynomial #2\n\n");
+                runUpdateSubmenuChanceV((*headCV)->nextCV, 2);
+            }
+            else
+                printf("    Not appropriate as there are no Polynomials!\n\n");
             break;
         case 4:
+            if (*headCV)
+            {
+                printf("      Display Polynomials -\n\n");
+                displayPolynomialsChanceV(*headCV);
+            }
+            else
+                printf("    Wrong Option!\n\n");
             break;
         case 5:
-            printf("  Have fun!\n\n");
+            printf("    Return to previous menu!\n\n");
             break;
         default:
-            printf("  Wrong option!\n\n");
+            printf("    Wrong option!\n\n");
         }
     }
 }
 
-void runUpdateSubmenuChanceV(TPolyPtrChanceV* headCV)
+void runUpdateSubmenuChanceV(TPolyPtrChanceV polyCV, int polyNum)
 {
     int optionCV = 0;
 
     while (optionCV != 4)
     {
-        displayMenuChanceV();
-        printf("Enter an integer for option + ENTER: ");
+        displayUpdateSubmenuChanceV();
+        printf("        Enter an integer for option + ENTER: ");
         scanf("%d", &optionCV);
         printf("\n");
 
         switch (optionCV)
         {
         case 1:
+            printf("          Adding 1 term -\n");
+            insertPolyTermChanceV(polyCV, 
+                utilCreatePolyTermChanceV());
+            printf("\n");
             break;
         case 2:
+            if (!polyCV)
+                printf("    Not appropriate as there are no Polynomials!");
             break;
         case 3:
+            displayPolynomialChanceV(polyCV, polyNum);
             break;
         case 4:
-            printf("Have fun!\n\n");
+            printf("        Return to previous menu!\n\n");
             break;
         default:
             printf("Wrong option!\n\n");
@@ -165,44 +209,201 @@ void runUpdateSubmenuChanceV(TPolyPtrChanceV* headCV)
 
 void createChanceV(TPolyPtrChanceV* headCV, int nTerms)
 {
-    TPolyPtrChanceV tailCV = *headCV;
+    TPolyPtrChanceV* tailCV = headCV;
     int doNextTerm = 1;
-    int expo, num, denom;
+    
 
     for (int poly = 0; poly < nTerms; poly++)
     {
-        printf("        Creating Poly #%d -\n\n", poly+1);
+        printf("          Creating Poly #%d -\n\n", poly+1);
 
         while (doNextTerm)
         {
-            printf("          Is there a term (1 : yes, 0 : no)? ");
+            printf("            Is there a term (1 : yes, 0 : no)? ");
             scanf("%d", &doNextTerm);
 
             if (!doNextTerm)
                 break;
 
-            printf("            Enter expo: ");
-            scanf("%d", &expo);
+            if (!(*tailCV) || !(*tailCV)->polyTermCV)
+            {
+                pushBackPolyChanceV(tailCV,
+                    createPolyChanceV(
+                        utilCreatePolyTermChanceV()
+                    )
+                );
+            }
+            else
+            {
+                insertPolyTermChanceV(*tailCV,
+                    utilCreatePolyTermChanceV()
+                );
+            }
+            printf("\n");
+        }
+        printf("\n");
+        doNextTerm = 1;
 
-            printf("            Creating coeff Fraction: ");
-            printf("              Enter num: ");
-            scanf("%d", &num);
-            printf("              Enter denom: ");
-            scanf("%d", &denom);
+        if (*tailCV)
+            tailCV = &((*tailCV)->nextCV);
+    }
+}
 
-            pushBackPolyChanceV(&tailCV,
-                createPolyChanceV(
-                    createPolyTermChanceV(expo, 
-                        createFractionChanceV(num, denom)
+TPolyTermPtrChanceV utilCreatePolyTermChanceV()
+{
+    int expo, num, denom;
+
+    printf("              Enter expo: ");
+    scanf("%d", &expo);
+
+    printf("              Creating coeff Fraction: \n");
+    printf("                Enter num: ");
+    scanf("%d", &num);
+    printf("                Enter denom: ");
+    scanf("%d", &denom);
+    return createPolyTermChanceV(expo,
+        createFractionChanceV(num, denom)
+    );
+}
+
+void evaluateChanceV(TPolyPtrChanceV headCV)
+{
+    TFractionPtrChanceV resultCV, xCV = NULL;
+    int numCV, denCV;
+
+    printf("    Enter the value (Fraction) to be evaluated with -\n");
+    printf("      num: ");
+    scanf("%d", &numCV);
+    printf("      denom: ");
+    scanf("%d", &denCV);
+    xCV = createFractionChanceV(numCV, denCV);
+    printf("\n");
+    
+    for (int i = 0; i < 2; i++)
+    {
+        if (!headCV || !headCV->polyTermCV)
+            break;
+
+        resultCV = evaluatePolyChanceV(headCV, xCV);
+        printf("    Poly #%d at x = (%d/%d): (%d/%d)\n",
+            i+1,
+            xCV->numCV, xCV->denCV,
+            resultCV->numCV, resultCV->denCV);
+        headCV = headCV->nextCV;
+        freeFractionChanceV(resultCV);
+    }
+    printf("\n");
+
+    deleteFractionChanceV(&xCV);
+}
+
+TPolyTermPtrChanceV getPolyTermChanceV(TPolyPtrChanceV polyCV, int expo)
+{
+    TPolyTermPtrChanceV iterCV = polyCV->polyTermCV;
+
+    while (iterCV)
+    {
+        if (iterCV->expoCV == expo)
+            return iterCV;
+
+        iterCV = iterCV->nextCV;
+    }
+
+    return NULL;
+}
+
+TPolyPtrChanceV addPolynomialsChanceV(
+    TPolyPtrChanceV poly1CV, 
+    TPolyPtrChanceV poly2CV)
+{
+    TPolyPtrChanceV resultCV = createPolyChanceV(NULL);
+    TPolyTermPtrChanceV iterCV = poly1CV->polyTermCV;
+    TPolyTermPtrChanceV otherTermCV;
+
+    while (iterCV)
+    {
+        otherTermCV = getPolyTermChanceV(poly2CV, iterCV->expoCV);
+
+        if (otherTermCV)
+        {
+            insertPolyTermChanceV(resultCV,
+                createPolyTermChanceV(iterCV->expoCV,
+                    addFractionsChanceV(iterCV->fractionCV,
+                        otherTermCV->fractionCV
                     )
                 )
             );
         }
+        else
+        {
+            insertPolyTermChanceV(resultCV, iterCV);
+        }
 
-        doNextTerm = 1;
-
-        tailCV = tailCV->nextCV;
+        iterCV = iterCV->nextCV;
     }
+
+    iterCV = poly2CV->polyTermCV;
+
+    while (iterCV)
+    {
+        otherTermCV = getPolyTermChanceV(resultCV, iterCV->expoCV);
+
+        if (!otherTermCV)
+        {
+            insertPolyTermChanceV(resultCV, iterCV);
+        }
+
+        iterCV = iterCV->nextCV;
+    }
+
+    return resultCV;
+}
+
+TPolyPtrChanceV multiplyPolynomialsChanceV(
+    TPolyPtrChanceV poly1CV,
+    TPolyPtrChanceV poly2CV)
+{
+    TPolyPtrChanceV resultCV = createPolyChanceV(NULL);
+    TPolyTermPtrChanceV iterCV = poly1CV->polyTermCV;
+    TPolyTermPtrChanceV otherTermCV;
+
+    while (iterCV)
+    {
+        otherTermCV = getPolyTermChanceV(poly2CV, iterCV->expoCV);
+
+        if (otherTermCV)
+        {
+            insertPolyTermChanceV(resultCV,
+                createPolyTermChanceV(iterCV->expoCV,
+                    multiplyFractionsChanceV(iterCV->fractionCV,
+                        otherTermCV->fractionCV
+                    )
+                )
+            );
+        }
+        else
+        {
+            insertPolyTermChanceV(resultCV, iterCV);
+        }
+
+        iterCV = iterCV->nextCV;
+    }
+
+    iterCV = poly2CV->polyTermCV;
+
+    while (iterCV)
+    {
+        otherTermCV = getPolyTermChanceV(resultCV, iterCV->expoCV);
+
+        if (!otherTermCV)
+        {
+            insertPolyTermChanceV(resultCV, iterCV);
+        }
+
+        iterCV = iterCV->nextCV;
+    }
+
+    return resultCV;
 }
 
 void pushBackPolyChanceV(TPolyPtrChanceV* tailCV, TPolyPtrChanceV addCV)
@@ -213,13 +414,63 @@ void pushBackPolyChanceV(TPolyPtrChanceV* tailCV, TPolyPtrChanceV addCV)
         *tailCV = addCV;
 }
 
-/*
-void checkFractionPalindromes(TFractionNodePtrChanceV* headCV)
+void displayPolynomialChanceV(TPolyPtrChanceV polyCV, int polyNum)
 {
-    TFractionNodePtrChanceV iterCV = *headCV;
-    int arePalin = 0;
+    TPolyTermPtrChanceV termIterPtr = polyCV->polyTermCV;
+    int termNum = 1;
 
-    if (!(*headCV))
+    if (polyNum)
+        printf("            Poly #%d -\n\n", polyNum);
+    printf("              Address: %p\n", polyCV);
+    printf("              Degree: %d\n", polyCV->degreeCV);
+    printf("              Number of Terms: %d\n\n", polyCV->nTermsCV);
+
+    while (termIterPtr)
+    {
+        printf("              Term #%d -\n", termNum);
+        printf("                Address: %p\n", termIterPtr);
+        printf("                Expo: %d\n", termIterPtr->expoCV);
+        printf("                  Coefficient -\n");
+        printf("                    Address: %p\n", termIterPtr->fractionCV);
+        printf("                    num: %d\n", termIterPtr->fractionCV->numCV);
+        printf("                    denom: %d\n", termIterPtr->fractionCV->denCV);
+        printf("\n");
+
+        if (termIterPtr->nextCV)
+            termIterPtr = termIterPtr->nextCV;
+        else
+            break;
+
+        termNum++;
+    }
+    printf("\n");
+}
+
+void displayPolynomialsChanceV(TPolyPtrChanceV headCV)
+{
+    TPolyTermPtrChanceV termIterPtr;
+    int termNum;
+    int polyNum = 1;
+
+    while (headCV)
+    {
+        displayPolynomialChanceV(headCV, polyNum);
+
+        if (headCV->nextCV)
+            headCV = headCV->nextCV;
+        else
+            break;
+
+        polyNum++;
+    }
+}
+
+void checkFractionPalindromesChanceV(TPolyPtrChanceV headCV, int polyNum)
+{
+    TPolyTermPtrChanceV iterCV = headCV->polyTermCV;
+    int arePalin = 1;
+
+    if (!iterCV)
     {
         printf("  Not appropriate as there is no list (or empty list)!\n\n");
         return 0;
@@ -227,28 +478,25 @@ void checkFractionPalindromes(TFractionNodePtrChanceV* headCV)
 
     while (iterCV)
     {
-        if (checkFractionPalindrome(iterCV->fractionCV))
-        {
-            printf("    A Palindrome Fraction at\n");
-            displayFractionDataChanceV(iterCV, 0);
-            printf("\n");
-            arePalin++;
-        }
+        if (!checkFractionPalindromeChanceV(iterCV->fractionCV))
+            arePalin = 0;
         iterCV = iterCV->nextCV;
     }
 
-    if (!arePalin)
-        printf("     There are no Palindrome Fraction's!\n\n");
+    printf("    Poly #%d is %s \n\n",
+        polyNum,
+        arePalin ?
+        "a Palindrome" : "not a Palindrome");
 
     iterCV = NULL;
 }
 
-int checkFractionPalindrome(TFractionPtrChanceV fractionCV)
+int checkFractionPalindromeChanceV(TFractionPtrChanceV fractionCV)
 {
-    int* numDigits = getDigits(fractionCV->numCV);
-    int* denDigits = getDigits(fractionCV->denCV);
-    int isPalindrome = checkPalindrome(numDigits) &&
-        checkPalindrome(denDigits);
+    int* numDigits = getDigitsChanceV(fractionCV->numCV);
+    int* denDigits = getDigitsChanceV(fractionCV->denCV);
+    int isPalindrome = checkPalindromeChanceV(numDigits) &&
+        checkPalindromeChanceV(denDigits);
 
     free(numDigits);
     free(denDigits);
@@ -256,7 +504,7 @@ int checkFractionPalindrome(TFractionPtrChanceV fractionCV)
     return isPalindrome;
 }
 
-int checkPalindrome(int* digits)
+int checkPalindromeChanceV(int* digits)
 {
     int length = 0;
     while (digits[length++] != -1);
@@ -271,7 +519,7 @@ int checkPalindrome(int* digits)
     return 1;
 }
 
-int* getDigits(int value)
+int* getDigitsChanceV(int value)
 {
     int* arr = malloc(BUFFER_LEN * sizeof(int));
     int current = 0;
@@ -290,6 +538,9 @@ int* getDigits(int value)
 
     return arr;
 }
+
+/*
+
 
 void insertFirstChanceV(TFractionNodePtrChanceV* headCV)
 {

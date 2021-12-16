@@ -15,33 +15,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cis27ChanceVHw5Utility.c">
+    <ClCompile Include="cis27ChanceVPolyTerm.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cis27Fall2021ChanceVHw5.c">
+    <ClCompile Include="cis27Fall2021ChanceVFinalExam.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cis27ChanceVFraction.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cis27ChanceVPoly.c">
+    <ClCompile Include="cis27ChanceVFinalUtility.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cis27ChanceVPolyTerm.c">
+    <ClCompile Include="cis27ChanceVPoly.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cis27ChanceVFraction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cis27ChanceVHw5Utility.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="cis27ChanceVPoly.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="cis27ChanceVPolyTerm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cis27ChanceVFinalUtility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cis27ChanceVFraction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

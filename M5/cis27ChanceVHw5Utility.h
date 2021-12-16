@@ -20,14 +20,24 @@ void displayInitSubmenuChanceV();
 void displayUpdateSubmenuChanceV();
 void runMenuChanceV();
 void runInitSubmenuChanceV(TPolyPtrChanceV* headCV);
-void runUpdateSubmenuChanceV(TPolyPtrChanceV* headCV);
+void runUpdateSubmenuChanceV(TPolyPtrChanceV polyCV, int polyNum);
 void createChanceV(TPolyPtrChanceV* headCV, int nTerms);
-void pushBackPolyChanceV(TPolyPtrChanceV tailCV, TPolyPtrChanceV addCV);
+TPolyTermPtrChanceV utilCreatePolyTermChanceV();
+void evaluateChanceV(TPolyPtrChanceV headCV);
+TPolyPtrChanceV addPolynomialsChanceV(
+    TPolyPtrChanceV poly1CV,
+    TPolyPtrChanceV poly2CV);
+TPolyPtrChanceV multiplyPolynomialsChanceV(
+    TPolyPtrChanceV poly1CV,
+    TPolyPtrChanceV poly2CV);
+void pushBackPolyChanceV(TPolyPtrChanceV* tailCV, TPolyPtrChanceV addCV);
+void displayPolynomialChanceV(TPolyPtrChanceV polyCV, int polyNum);
+void displayPolynomialsChanceV(TPolyPtrChanceV headCV);
+void checkFractionPalindromesChanceV(TPolyPtrChanceV headCV, int polyNum);
+int checkFractionPalindromeChanceV(TFractionPtrChanceV fractionCV);
+int checkPalindromeChanceV(int* digits);
+int* getDigitsChanceV(int value);
 /*
-void checkFractionPalindromes(TFractionNodePtrChanceV* headCV);
-int checkFractionPalindrome(TFractionPtrChanceV fractionCV);
-int checkPalindrome(int* digits);
-int* getDigits(int value);
 void insertFirstChanceV(TFractionNodePtrChanceV* headCV);
 void removeFirstChanceV(TFractionNodePtrChanceV* headCV);
 void getFractionDataChanceV(int* numCV, int* denCV, int);

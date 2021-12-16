@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{97e1fa0e-cdbd-45b1-83e8-499a75b64803}</ProjectGuid>
-    <RootNamespace>M5</RootNamespace>
+    <ProjectGuid>{cafeee27-9971-4c3a-85a1-968ca19e72ac}</ProjectGuid>
+    <RootNamespace>MFinal</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -140,14 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cis27ChanceVFraction.c" />
-    <ClCompile Include="cis27ChanceVHw5Utility.c" />
+    <ClCompile Include="cis27ChanceVFinalUtility.c" />
     <ClCompile Include="cis27ChanceVPoly.c" />
     <ClCompile Include="cis27ChanceVPolyTerm.c" />
-    <ClCompile Include="cis27Fall2021ChanceVHw5.c" />
+    <ClCompile Include="cis27Fall2021ChanceVFinalExam.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cis27ChanceVFraction.h" />
-    <ClInclude Include="cis27ChanceVHw5Utility.h" />
+    <ClInclude Include="cis27ChanceVFinalUtility.h" />
     <ClInclude Include="cis27ChanceVPoly.h" />
     <ClInclude Include="cis27ChanceVPolyTerm.h" />
   </ItemGroup>

@@ -1,7 +1,16 @@
-#include <stdlib.h>
+/**
+  * Program Name: cis27ChanceVFraction.h
+  * Discussion: Multi-File Setup
+  *				- Specification File
+  *				- struct Fraction
+  * Written By: Chance Vodnoy
+  * Date: 2021/12/16
+  */
 
-#ifndef FRACTION
-#define FRACTION
+#ifndef CIS27CHANCEVFRACTION_H
+#define CIS27CHANCEVFRACTION_H
+
+#include <stdlib.h>
 
 typedef struct FractionChanceV TFractionChanceV;
 typedef struct FractionChanceV* TFractionPtrChanceV;
